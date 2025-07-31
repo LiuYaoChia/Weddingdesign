@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>客製化婚禮設計Charlie</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="heart-container"></div>
+  <div class="container">
+    <div class="screen">
+      <!-- ⚠️ Replace with your actual image path or use a full URL -->
+      <img src="image/S__34422838.jpg" class="background" alt="背景顯示" />
+    </div>
+    <div class="chat-panel">
+      <!-- ✅ Only this wrapper should scroll -->
+      <div class="msg-list-wrapper">
+      <ul id="msg-list"></ul>
+      </div>
+      <!-- ✅ These should remain outside the scrollable area -->
+      <canvas id="qr-code"></canvas>
+      <button id="remove-latest" class="remove-btn">移除所有留言{需有密碼}</button>
+      <form id="msg-form">
+        <input type="text" id="nickname" placeholder="暱稱 (可選)" maxlength="12">
+        <div class="input-group">
+          <input type="text" id="message" placeholder="輸入留言…" required>
+          <button type="button" id="emoji-button">😊</button>
+          <emoji-picker id="emoji-picker" style="display:none;"></emoji-picker>
+         </div>
+        <button type="submit">送出</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
