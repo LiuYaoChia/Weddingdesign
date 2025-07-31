@@ -192,6 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
     heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
     heart.style.left = Math.random() * window.innerWidth + 'px';
     container.appendChild(heart);
-    setTimeout(() => heart.remove(), 1600);
+    setTimeout(() => heart.remove(), 1800);
   }
 });
