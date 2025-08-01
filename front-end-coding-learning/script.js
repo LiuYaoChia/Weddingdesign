@@ -181,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
   // 🧾 QR Code generator
-document.getElementById('qrious-script').addEventListener('load', () => {
   const qrCanvas = document.getElementById("qr-code");
   if (qrCanvas && window.QRious) {
     new QRious({
