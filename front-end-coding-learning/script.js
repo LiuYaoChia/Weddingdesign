@@ -178,30 +178,29 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(heart);
     setTimeout(() => heart.remove(), 2000);
   }
-  // --- QR Code generation setup ---
-
-  function initQR() {
-    const qrCanvas = document.getElementById("qr-code");
-    if (qrCanvas && window.QRious) {
-      new QRious({
-        element: qrCanvas,
-        value: 'https://liuyaochia.github.io/Weddingdesign/front-end-coding-learning/pinny.html',
-        size: 120
-      });
-    } else {
-      console.warn("⚠️ QRious 未加載或找不到畫布元素。");
-    }
+  
+  // --- ✅ Dynamically load QRious and generate QR code ---
+  function loadQRiousAndInit() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/qrious@2.0.1/dist/qrious.min.js';
+    script.onload = () => {
+      const qrCanvas = document.getElementById("qr-code");
+      if (window.QRious && qrCanvas) {
+        new QRious({
+          element: qrCanvas,
+          value: 'https://liuyaochia.github.io/Weddingdesign/front-end-coding-learning/pinny.html',
+          size: 120
+        });
+      } else {
+        console.warn("⚠️ QRious failed to load or canvas not found.");
+      }
+    };
+    script.onerror = () => {
+      console.error("❌ Failed to load QRious script.");
+    };
+    document.head.appendChild(script);
   }
 
-  // Wait for QRious script to load before initializing QR code
-  const qrScript = document.getElementById('qrious-script');
-  if (qrScript) {
-    if (qrScript.readyState === 'complete' || qrScript.readyState === 'loaded') {
-      initQR();
-    } else {
-      qrScript.addEventListener('load', initQR);
-    }
-  } else {
-    console.warn('⚠️ 找不到 QRious script 標籤');
-  }
+  // Load QRious on page load
+  loadQRiousAndInit();
 });
