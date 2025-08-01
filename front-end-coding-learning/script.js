@@ -1,5 +1,4 @@
 // 🔧 Import Firebase
-import 'https://unpkg.com/@joeattardi/emoji-picker-element@1.5.7/dist/emoji-picker-element.js';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getDatabase,
