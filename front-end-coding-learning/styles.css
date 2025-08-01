@@ -251,7 +251,7 @@ body, html {
   height: 100vh;
   pointer-events: none;
   overflow: visible;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .heart {
