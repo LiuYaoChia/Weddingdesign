@@ -164,21 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
     );
   }
-
-  // 🧾 QR Code generator
-document.getElementById('qrious-script').addEventListener('load', () => {
-  const qrCanvas = document.getElementById("qr-code");
-  if (qrCanvas && window.QRious) {
-    new QRious({
-      element: qrCanvas,
-      value: 'https://liuyaochia.github.io/Weddingdesign/front-end-coding-learning/pinny.html',
-      size: 120
-    });
-  } else {
-    console.warn("⚠️ QRious 未加載或找不到畫布元素。");
-  }
-});
-
+  
   // 💖 Floating heart animation
   const heartEmojis = ['💖', '💗', '💘', '❤️', '💕'];
 
@@ -191,5 +177,19 @@ document.getElementById('qrious-script').addEventListener('load', () => {
     heart.style.bottom = '50px';
     container.appendChild(heart);
     setTimeout(() => heart.remove(), 2000);
+  }
+});
+
+  // 🧾 QR Code generator
+document.getElementById('qrious-script').addEventListener('load', () => {
+  const qrCanvas = document.getElementById("qr-code");
+  if (qrCanvas && window.QRious) {
+    new QRious({
+      element: qrCanvas,
+      value: 'https://liuyaochia.github.io/Weddingdesign/front-end-coding-learning/pinny.html',
+      size: 120
+    });
+  } else {
+    console.warn("⚠️ QRious 未加載或找不到畫布元素。");
   }
 });
