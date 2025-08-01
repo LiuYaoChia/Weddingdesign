@@ -173,10 +173,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const heart = document.createElement('div');
     heart.classList.add('heart');
     heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.bottom = '50px';
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y}px`;
     container.appendChild(heart);
     setTimeout(() => heart.remove(), 2000);
+  }
+  
+  function showFloatingHeartSwarm(count = 10) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(showFloatingHeart, i * 80); // staggered effect
+    }
   }
   
   // --- ✅ Dynamically load QRious and generate QR code ---
