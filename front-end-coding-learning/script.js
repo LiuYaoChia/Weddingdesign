@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     push(messagesRef, msg).then(() => {
       sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
-      showFloatingHeart();
+      showFloatingHeartSwarm();
       textInput.value = "";
 
       textInput.style.border = "2px solid #5f6bc2";
