@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const picker = new EmojiButton({
     position: 'top-start',
     autoHide: true,
+    position: { top: '10px', right: '10px' },
+    rootElement: document.body
   });
 
   // Insert emoji into input when selected
