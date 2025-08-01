@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const messageInput = textInput; // same element
 
   // 🎵 Audio setup with error handling
-  const sendSound = new Audio("audio/applause-cheer-236786.mp3");
+  const sendSound = new Audio("audio/61 完成任務.mp3");
   sendSound.volume = 0.4;
 
   // 🧠 Track message keys
