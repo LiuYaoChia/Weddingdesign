@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   picker.addEventListener('emoji-click', event => {
-    const emoji = event.detail.emoji; // ✅ this is the correct property
+    const emoji = event.detail.unicode; // ✅ this is the correct property
     messageInput.value += emoji;
     picker.style.display = 'none';
     messageInput.focus();
