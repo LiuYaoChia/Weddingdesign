@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🎉 Initialize EmojiButton picker
   const picker = new EmojiButton({
-    position: 'top-end',
+    position: 'top-start',
     autoHide: true,
   });
 
