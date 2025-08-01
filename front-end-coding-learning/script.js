@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
   });
 
-  picker.addEventListener('emoji-click', event => {
-    const emoji = event.detail.unicode; // ✅ this is the correct property
+  picker.addEventListener('emoji-clicked', event => {
+    const emoji = event.detail.unicode;
     messageInput.value += emoji;
     picker.style.display = 'none';
     messageInput.focus();
