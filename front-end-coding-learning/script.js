@@ -166,27 +166,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   // 💖 Floating heart animation
-  const heartEmojis = ['💖', '💗', '💘', '❤️', '💕'];
-
-  function showFloatingHeart() {
+  function showFloatingHeartSwarm() {
     const container = document.getElementById('heart-container');
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
+    const heartEmojis = ['💖', '💗', '💘', '❤️', '💕'];
+    const numHearts = 10; // how many to generate per burst
 
-    heart.style.left = `${x}px`;
-    heart.style.top = `${y}px`;
-    container.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
-  }
-  
-  function showFloatingHeartSwarm(count = 10) {
-    for (let i = 0; i < count; i++) {
-      setTimeout(showFloatingHeart, i * 80); // staggered effect
+    for (let i = 0; i < numHearts; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+      // Random horizontal position
+      heart.style.left = Math.random() * 100 + 'vw';
+
+      // Random vertical offset to stagger appearance
+      heart.style.bottom = Math.random() * 50 + 'px';
+
+      // Random animation duration and delay
+      const duration = 2 + Math.random() * 2; // 2s to 4s
+      const delay = Math.random() * 0.5;
+
+      heart.style.animation = `floatUp ${duration}s ease-out ${delay}s forwards`;
+
+      container.appendChild(heart);
+
+      // Remove after animation completes
+      setTimeout(() => heart.remove(), (duration + delay) * 1000);
     }
   }
+
   
   // --- ✅ Dynamically load QRious and generate QR code ---
   function loadQRiousAndInit() {
