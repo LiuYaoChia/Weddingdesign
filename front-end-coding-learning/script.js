@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // 😊emoji toggle
   button.addEventListener('click', () => {
     picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
-    });
+  });
 
   picker.addEventListener('emoji-click', event => {
-    const emoji = event.detail.unicode;
+    const emoji = event.detail.emoji; // ✅ this is the correct property
     messageInput.value += emoji;
     picker.style.display = 'none';
     messageInput.focus();
-    });
+  });
   
   // 🆕 Hide emoji picker when clicking outside
   document.addEventListener('click', (e) => {
