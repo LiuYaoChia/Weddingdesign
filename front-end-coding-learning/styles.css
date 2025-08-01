@@ -191,7 +191,7 @@ body, html {
   position: absolute;
   top: 120%;
   right: 0;
-  z-index: 1000;
+  z-index: 9999;
   max-height: 320px;
 }
 
