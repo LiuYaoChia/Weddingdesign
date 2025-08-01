@@ -178,8 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(heart);
     setTimeout(() => heart.remove(), 2000);
   }
-});
-
+  
   // 🧾 QR Code generator
   const qrCanvas = document.getElementById("qr-code");
   if (qrCanvas && window.QRious) {
