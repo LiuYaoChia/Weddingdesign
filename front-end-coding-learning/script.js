@@ -9,6 +9,9 @@ import {
   remove
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
+// 🎉 Import Emoji Button from Skypack CDN
+import { EmojiButton } from 'https://cdn.skypack.dev/emoji-button';
+
 localStorage.removeItem("firebase:previous_websocket_failure");
 
 // ✅ Firebase config
@@ -35,9 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const textInput = document.getElementById("message");
   const removeBtn = document.getElementById("remove-latest");
   const listWrapper = document.querySelector('.msg-list-wrapper');
-  const picker = document.getElementById("emoji-picker");
   const button = document.getElementById("emoji-button");
-  const messageInput = document.getElementById("message");
+  const messageInput = textInput; // same element
 
   // 🎵 Audio setup with error handling
   const sendSound = new Audio("audio/applause-cheer-236786.mp3");
@@ -46,24 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🧠 Track message keys
   const msgKeyOrder = [];
 
-  // 😊emoji toggle
-  button.addEventListener('click', () => {
-    picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
+  // 🎉 Initialize EmojiButton picker
+  const picker = new EmojiButton({
+    position: 'bottom-start',
+    autoHide: true
   });
 
-  picker.addEventListener('emoji-clicked', event => {
-    const emoji = event.detail.unicode;
-    messageInput.value += emoji;
-    picker.style.display = 'none';
+  // Insert emoji into input when selected
+  picker.on('emoji', selection => {
+    messageInput.value += selection.emoji;
     messageInput.focus();
   });
-  
-  // 🆕 Hide emoji picker when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!picker.contains(e.target) && e.target !== button) {
-      picker.style.display = 'none';
-    }
-  });  
+
+  // Toggle picker on button click
+  button.addEventListener('click', () => {
+    picker.togglePicker(button);
+  });
 
   // 📩 Listen for new messages
   onChildAdded(messagesRef, snapshot => {
@@ -100,13 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     push(messagesRef, msg).then(() => {
-      // 🎵 Suggestion: Sound with error handling
       sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
-
       showFloatingHeart();
       textInput.value = "";
 
-      // 🎯 Suggestion: Visual feedback on input
       textInput.style.border = "2px solid #5f6bc2";
       setTimeout(() => textInput.style.border = "", 300);
     });
@@ -191,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     heart.classList.add('heart');
     heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
     heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.bottom = '50px';  // Set vertical position (adjust as needed)
+    heart.style.bottom = '50px';
     container.appendChild(heart);
     setTimeout(() => heart.remove(), 2000);
   }
