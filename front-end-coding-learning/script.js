@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const textInput = document.getElementById("message");
   const removeBtn = document.getElementById("remove-latest");
   const listWrapper = document.querySelector('.msg-list-wrapper');
-  const picker = document.getElementById('emoji-picker');
-  const button = document.getElementById('emoji-button');
-  const messageInput = document.getElementById('message');
+  const picker = document.getElementById("emoji-picker");
+  const button = document.getElementById("emoji-button");
+  const messageInput = document.getElementById("message");
 
   // 🎵 Audio setup with error handling
   const sendSound = new Audio("audio/applause-cheer-236786.mp3");
