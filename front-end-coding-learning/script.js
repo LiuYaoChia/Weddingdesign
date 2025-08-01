@@ -10,7 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 // 🎉 Import Emoji Button from Skypack CDN
-import EmojiButton from 'https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/emoji-button.min.js';
+import EmojiButton from 'https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.5.2/dist/emoji-button.min.js';
 
 localStorage.removeItem("firebase:previous_websocket_failure");
 
