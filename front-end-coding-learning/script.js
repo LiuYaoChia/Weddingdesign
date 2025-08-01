@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- ✅ Dynamically load QRious and generate QR code ---
   function loadQRiousAndInit() {
     const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/qrious@2.0.1/dist/qrious.min.js';
+    script.src = 'https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js';
     script.onload = () => {
       const qrCanvas = document.getElementById("qr-code");
       if (window.QRious && qrCanvas) {
