@@ -74,7 +74,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(`li[data-key="${key}"]`)) return;
     msgKeyOrder.push(key);
     renderMessage(msg, key);
+    
+  // 💖 Trigger floating heart and sound on *every device* when a new message arrives
+    function isMobileDevice() {
+      return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    }
+    let initialLoadComplete = false;
+    let initialMessageCount = 0;
+    if (initialLoadComplete) {
+      showFloatingHeartSwarm(); // 👈 Only animate for *new* messages
+    } else {
+      initialMessageCount++;
+    }
+    if (initialLoadComplete) {
+      if (!isMobileDevice()) {
+    // ✅ Only play sound on desktop/laptop
+        sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
+      }
   });
+  // ✅ Delay marking initial load complete
+  setTimeout(() => {
+    initialLoadComplete = true;
+  }, 1500);
 
   // ❌ Listen for deletions
   onChildRemoved(messagesRef, snapshot => {
@@ -101,10 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     push(messagesRef, msg).then(() => {
-      sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
-      showFloatingHeartSwarm();
       textInput.value = "";
-
       textInput.style.border = "2px solid #5f6bc2";
       setTimeout(() => textInput.style.border = "", 300);
     });
@@ -222,3 +240,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
