@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     msgKeyOrder.push(key);
     renderMessage(msg, key);
     
-  // 💖 Trigger floating heart and sound on *every device* when a new message arrives
+    // 💖 Trigger floating heart and sound on *every device* when a new message arrives
     function isMobileDevice() {
       return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
     }
@@ -240,4 +240,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
 
