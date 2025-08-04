@@ -87,8 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
       showFloatingHeartSwarm(); // 👈 Only animate for *new* messages
       if (!isMobileDevice()) {
     // ✅ Only play sound on desktop/laptop
-        sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
-      }
     } else {
       initialMessageCount++;
     }
@@ -241,6 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
 
 
 
