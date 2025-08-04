@@ -44,7 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🎵 Audio setup with error handling
   const sendSound = new Audio("audio/61 完成任務.mp3");
   sendSound.volume = 0.4;
-
+  
+  // 🔓 Unlock audio for iOS/Safari
+  document.addEventListener("click", () => {
+    sendSound.play()
+      .then(() => {
+        sendSound.pause();
+        sendSound.currentTime = 0;
+      })
+      .catch(err => console.warn("⚠️ iOS audio unlock failed:", err));
+  }, { once: true });
+  
   // 🧠 Track message keys
   const msgKeyOrder = [];
 
@@ -238,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
 
 
 
