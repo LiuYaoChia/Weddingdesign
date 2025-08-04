@@ -177,11 +177,30 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="text">${escapeHtml(msg.text)}</div>
         <div class="time">${msg.time}</div>
       </div>
+      <button class="delete-btn">🗑️</button>
     `;
+    // 👇 Add click handler to the delete button
+    li.querySelector(".delete-btn").addEventListener("click", () => {
+      if (confirm("確定要刪除這則留言嗎？")) {
+        deleteMessage(key);
+      }
+    });
+
     list.appendChild(li);
     listWrapper.scrollTop = listWrapper.scrollHeight;
   }
-
+// ✅ Function to delete message from Firebase
+  function deleteMessage(key) {
+    const msgRef = ref(db, `messages/${key}`);
+    remove(msgRef)
+      .then(() => {
+        console.log(`✅ Message ${key} deleted`);
+      })
+      .catch((error) => {
+        console.error("❌ Failed to delete message:", error);
+      });
+  }
+  
   // 🎨 Generate pastel color
   function randomColor() {
     const hue = Math.floor(Math.random() * 360);
@@ -251,12 +270,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
-
-
-
-
-
-
-
-
-
