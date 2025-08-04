@@ -85,8 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 💖 Trigger floating heart and sound on *every device* when a new message arrives
     if (initialLoadComplete) {
       showFloatingHeartSwarm(); // 👈 Only animate for *new* messages
-      if (!isMobileDevice()) {
-    // ✅ Only play sound on desktop/laptop
     } else {
       initialMessageCount++;
     }
@@ -239,6 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
 
 
 
