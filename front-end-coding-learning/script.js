@@ -85,9 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 💖 Trigger floating heart and sound on *every device* when a new message arrives
     if (initialLoadComplete) {
       showFloatingHeartSwarm(); // 👈 Only animate for *new* messages
-      if (!isMobileDevice()) {
-        sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
-      }
+      sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
     } else {
       initialMessageCount++;
     }
@@ -240,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
 
 
 
