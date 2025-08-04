@@ -67,6 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 📩 Listen for new messages
+  let initialLoadComplete = false;
+  let initialMessageCount = 0;
+  
+  function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+  }
+
   onChildAdded(messagesRef, snapshot => {
     const msg = snapshot.val();
     const key = snapshot.key;
@@ -76,21 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMessage(msg, key);
     
     // 💖 Trigger floating heart and sound on *every device* when a new message arrives
-    function isMobileDevice() {
-      return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
-    }
-    let initialLoadComplete = false;
-    let initialMessageCount = 0;
     if (initialLoadComplete) {
       showFloatingHeartSwarm(); // 👈 Only animate for *new* messages
-    } else {
-      initialMessageCount++;
-    }
-    if (initialLoadComplete) {
       if (!isMobileDevice()) {
     // ✅ Only play sound on desktop/laptop
         sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
       }
+    } else {
+      initialMessageCount++;
+    }
   });
   // ✅ Delay marking initial load complete
   setTimeout(() => {
@@ -240,5 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load QRious on page load
   loadQRiousAndInit();
 });
+
 
 
