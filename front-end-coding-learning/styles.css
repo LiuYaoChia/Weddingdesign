@@ -337,26 +337,53 @@ body, html {
   position: absolute;
   max-width: 320px;
   min-height: 100px;
-  background: rgba(255, 255, 255, 0.95);
-  color: #222;
-  padding: 2rem 2.5rem;
-  border-radius: 24px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  font-size: 1.6rem;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(255, 95, 109, 0.6);
+  font-size: 1.4rem;
   font-weight: 700;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 9999;
   user-select: none;
-  transform-origin: center center;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+  transform-origin: bottom left;
+  transform: translateY(20px) scale(0.9);
+  transition: 
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
+/* Show popup with animation */
 .popup-message.show {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1);
+  transform: translateY(0) scale(1);
 }
 
+/* Optional: a small animated icon */
+.popup-message .icon {
+  width: 48px;
+  height: 48px;
+  background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') no-repeat center/contain;
+  animation: pulse 1.5s infinite ease-in-out;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px #fff);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px #fff);
+  }
+}
