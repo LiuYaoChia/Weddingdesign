@@ -13,7 +13,6 @@ import {
 import { EmojiButton } from 'https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.js';
 
 localStorage.removeItem("firebase:previous_websocket_failure");
-localStorage.setItem("userNick", nick);
 
 // ✅ Firebase config
 const firebaseConfig = {
@@ -128,6 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = textInput.value.trim();
     if (!text) return;
 
+    localStorage.setItem("userNick", nick);
+
     const msg = {
       nick,
       text,
@@ -183,19 +184,19 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="delete-btn">🗑️</button>
     `;
     // ✅ Only show delete button if nickname matches
-    if (currentNick === msg.nick) {
-      const deleteBtn = document.createElement("button");
-      deleteBtn.className = "delete-btn";
-      deleteBtn.textContent = "🗑️";
-
+    const currentNick = localStorage.getItem("userNick");
+    if (currentNick && currentNick === msg.nick) {
+      const deleteBtn = li.querySelector(".delete-btn");
       deleteBtn.addEventListener("click", () => {
         if (confirm("確定要刪除這則留言嗎？")) {
           deleteMessage(key);
         }
-      });
-
-      li.appendChild(deleteBtn);
-    }
+    });
+  } else {
+    // Hide the delete button for others
+    li.querySelector(".delete-btn").style.display = "none";
+  }
+    
     list.appendChild(li);
     listWrapper.scrollTop = listWrapper.scrollHeight;
   }
@@ -291,4 +292,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2500); // disappear after 2.5s
   }
 });
+
 
