@@ -312,7 +312,10 @@ body, html {
     flex-direction: column;
   }
 
-  .screen,
+  .screen{
+    display: none !important;
+  }
+  
   .chat-panel {
     width: 100%;
     height: 50vh; /* or adjust based on need */
@@ -387,3 +390,4 @@ body, html {
     filter: drop-shadow(0 0 10px #fff);
   }
 }
+
