@@ -311,4 +311,24 @@ body, html {
   color: #ff6666;
 }
 
+.popup-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  font-size: 1.2rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.popup-message.show {
+  opacity: 1;
+}
 
