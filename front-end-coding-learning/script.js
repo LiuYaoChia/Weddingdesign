@@ -13,6 +13,7 @@ import {
 import { EmojiButton } from 'https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.js';
 
 localStorage.removeItem("firebase:previous_websocket_failure");
+localStorage.setItem("userNick", nick);
 
 // ✅ Firebase config
 const firebaseConfig = {
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const listWrapper = document.querySelector('.msg-list-wrapper');
   const button = document.getElementById("emoji-button");
   const messageInput = textInput; // same element
+  const nick = nickInput.value.trim() || "匿名";
 
   // 🎵 Audio setup with error handling
   const sendSound = new Audio("audio/61 完成任務.mp3");
@@ -94,7 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // 💖 Trigger floating heart and sound on *every device* when a new message arrives
     if (initialLoadComplete) {
-      showFloatingHeartSwarm(); // 👈 Only animate for *new* messages
+      showFloatingHeartSwarm();// 👈 Only animate for *new* messages
+      showNewMessagePopup(msg.nick, msg.text);// 👈 Only animate for *new* messages
       if (!isMobileDevice()) {
         sendSound.play().catch(err => console.warn("🔇 無法播放音效：", err.message));
       }
@@ -179,13 +182,20 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <button class="delete-btn">🗑️</button>
     `;
-    // 👇 Add click handler to the delete button
-    li.querySelector(".delete-btn").addEventListener("click", () => {
-      if (confirm("確定要刪除這則留言嗎？")) {
-        deleteMessage(key);
-      }
-    });
+    // ✅ Only show delete button if nickname matches
+    if (currentNick === msg.nick) {
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "delete-btn";
+      deleteBtn.textContent = "🗑️";
 
+      deleteBtn.addEventListener("click", () => {
+        if (confirm("確定要刪除這則留言嗎？")) {
+          deleteMessage(key);
+        }
+      });
+
+      li.appendChild(deleteBtn);
+    }
     list.appendChild(li);
     listWrapper.scrollTop = listWrapper.scrollHeight;
   }
@@ -269,4 +279,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load QRious on page load
   loadQRiousAndInit();
+
+  //  Show the popup
+  function showNewMessagePopup(nick, text) {
+    const popup = document.getElementById("new-msg-popup");
+    popup.innerHTML = `<strong>${escapeHtml(nick)}</strong>: ${escapeHtml(text)}`;
+    popup.classList.add("show");
+
+    setTimeout(() => {
+      popup.classList.remove("show");
+    }, 2500); // disappear after 2.5s
+  }
 });
+
