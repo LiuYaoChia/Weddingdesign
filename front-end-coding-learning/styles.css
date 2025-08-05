@@ -162,6 +162,10 @@ body, html {
 .input-group {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  gap: 6px;          /* Space between input and button */
+  align-items: center;
 }
 
 .input-group input[type="text"] {
@@ -177,6 +181,8 @@ body, html {
   color: white;
   outline: none;
   box-sizing: border-box;
+  flex: 1 1 auto;
+  min-width: 0; /* Prevent overflow in flex container */
 }
 
 .input-group input[type="text"]::placeholder {
@@ -237,6 +243,9 @@ body, html {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
+  display: inline-block;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 
 .remove-btn:hover {
@@ -324,6 +333,8 @@ body, html {
     height: 100vh;
     border-radius: 0; /* remove border radius for full-screen look */
     padding-bottom: 20px; /* optional: spacing for input area */
+    padding: 10px;
+    overflow-x: visible;
   }
 }
 
@@ -442,3 +453,4 @@ html, body {
   padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
