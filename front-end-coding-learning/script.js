@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="text">${escapeHtml(msg.text)}</div>
         <div class="time">${msg.time}</div>
       </div>
-      <button class="delete-btn">🗑️</button>
+      <button class="delete-btn" aria-label="刪除自己的留言">🗑️</button>
     `;
     // ✅ Only show delete button if nickname matches
     const currentNick = localStorage.getItem("userNick");
@@ -314,3 +314,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2500);
   }
 });
+
