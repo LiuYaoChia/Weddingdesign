@@ -429,3 +429,16 @@ html, body {
     padding: 14px;
   }
 }
+
+@supports (height: 100dvh) {
+  html, body {
+    height: 100dvh;
+  }
+
+  .chat-panel {
+    height: 100dvh;
+  }
+  #msg-form {
+  padding-bottom: env(safe-area-inset-bottom);
+  }
+}
