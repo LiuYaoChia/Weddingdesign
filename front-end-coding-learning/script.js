@@ -284,13 +284,29 @@ document.addEventListener("DOMContentLoaded", () => {
   //  Show the popup
   function showNewMessagePopup(nick, text) {
     const popup = document.getElementById("new-msg-popup");
+    const container = document.querySelector('.screen');
+
     popup.innerHTML = `<strong>${escapeHtml(nick)}</strong>: ${escapeHtml(text)}`;
     popup.classList.add("show");
 
+    // Popup size based on CSS max-width and min-height
+    const popupWidth = 320;
+    const popupHeight = 100;
+
+    // Calculate max available positions inside container
+    const maxLeft = container.clientWidth - popupWidth;
+    const maxTop = container.clientHeight - popupHeight;
+
+    // Random position inside the video panel
+    const randomLeft = Math.floor(Math.random() * maxLeft);
+    const randomTop = Math.floor(Math.random() * maxTop);
+
+    popup.style.left = randomLeft + "px";
+    popup.style.top = randomTop + "px";
+
+    // Hide popup after 2.5 seconds
     setTimeout(() => {
       popup.classList.remove("show");
-    }, 2500); // disappear after 2.5s
+    }, 2500);
   }
 });
-
-
