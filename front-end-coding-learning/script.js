@@ -285,10 +285,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function showNewMessagePopup(nick, text) {
     const popup = document.getElementById("new-msg-popup");
     const container = document.querySelector('.screen');
-
-    popup.innerHTML = `<strong>${escapeHtml(nick)}</strong>: ${escapeHtml(text)}`;
+    
+    popup.innerHTML = `
+      <span class="icon"></span>
+      <div><strong>${escapeHtml(nick)}</strong><br>${escapeHtml(text)}</div>
+    `;
+    
     popup.classList.add("show");
-
+    
     // Popup size based on CSS max-width and min-height
     const popupWidth = 320;
     const popupHeight = 100;
