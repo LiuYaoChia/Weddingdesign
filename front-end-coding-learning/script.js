@@ -328,7 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
    clearTimeout(popupTimeout); // 🔁 Prevent overlap flickering
     popupTimeout = setTimeout(() => {
       popup.classList.remove("show");
-    }, 3000);
+    }, 5000);
   }
 });
+
 
