@@ -75,7 +75,6 @@ html, body {
   margin-bottom: 10px;
   padding-right: 6px;
   position: relative;
-  padding-bottom: 12rem;
 }
 
 .msg-list-wrapper::-webkit-scrollbar {
@@ -102,6 +101,10 @@ html, body {
   border-radius: 6px;
   padding: 8px;
   animation: slide-up 0.5s forwards;
+}
+
+.msg-item:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes slide-up {
@@ -485,3 +488,4 @@ html, body {
     padding: 14px;
   }
 }
+
