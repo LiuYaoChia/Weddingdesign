@@ -414,11 +414,11 @@ html, body {
   cursor: pointer;
   font-size: 1.2em;
   margin-left: 10px;
-  color: #ccc;
+  color: #006633;
   transition: color 0.2s ease;
 }
 .delete-btn:hover {
-  color: #ff6666;
+  color: #336600;
 }
 .delete-btn:focus {
   outline: 2px dashed var(--accent);
@@ -488,4 +488,5 @@ html, body {
     padding: 14px;
   }
 }
+
 
