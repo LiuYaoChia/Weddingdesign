@@ -1,39 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>客製化婚禮設計Charlie</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>客製化婚禮設計 Charlie</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- 💖 Floating Hearts -->
   <div id="heart-container"></div>
+
+  <!-- 📦 Main Layout Container -->
   <div class="container">
+
+    <!-- 🎥 Video Background Section -->
     <div class="screen">
       <video id="wedding-video" autoplay loop playsinline muted>
-        <source src="video/RPReplay_Final1698163169.mp4" type="video/mp4">
+        <source src="video/RPReplay_Final1698163169.mp4" type="video/mp4" />
         您的瀏覽器不支援 HTML5 視訊。
       </video>
+
+      <!-- 🔔 Message Popup -->
       <div id="new-msg-popup" class="popup-message"></div>
     </div>
+
+    <!-- 💬 Chat Panel -->
     <div class="chat-panel">
-      <!-- ✅ Only this wrapper should scroll -->
+      <!-- 📜 Scrollable message list -->
       <div class="msg-list-wrapper">
-      <ul id="msg-list"></ul>
+        <ul id="msg-list"></ul>
       </div>
-      <!-- ✅ These should remain outside the scrollable area -->
+
+      <!-- 📷 QR Code Canvas -->
       <canvas id="qr-code" width="120" height="120"></canvas>
-      <button id="remove-latest" class="remove-btn">移除所有留言{需有密碼}</button>
-      <form id="msg-form">
-        <input type="text" id="nickname" placeholder="暱稱" maxlength="12">
+
+      <!-- ❌ Admin Remove Button -->
+      <button id="remove-latest" class="remove-btn" aria-label="刪除所有留言按鈕">
+        移除所有留言{需有密碼}
+      </button>
+
+      <!-- 📝 Message Form -->
+      <form id="msg-form" aria-label="留言表單">
+        <input
+          type="text"
+          id="nickname"
+          placeholder="暱稱"
+          maxlength="12"
+          aria-label="輸入暱稱"
+        />
+
         <div class="input-group">
-          <input type="text" id="message" placeholder="輸入留言…" required>
-          <button type="button" id="emoji-button" aria-label="插入表情符號">😊</button>
-         </div>
+          <input
+            type="text"
+            id="message"
+            placeholder="輸入留言…"
+            required
+            aria-label="留言內容"
+          />
+          <button
+            type="button"
+            id="emoji-button"
+            aria-label="插入表情符號"
+          >
+            😊
+          </button>
+        </div>
+
         <button type="submit">送出</button>
       </form>
     </div>
   </div>
+
+  <!-- 🚀 Main Script -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
