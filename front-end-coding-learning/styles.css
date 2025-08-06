@@ -2,7 +2,7 @@
   --primary-bg: rgba(255, 255, 255, 0.15);
   --chat-bg: rgba(0, 0, 0, 0.4);
   --accent: #5f6bc2;
-  --remove: #993333;
+  --remove: #336600;
   --msg-highlight: rgba(255, 255, 255, 0.1);
   --text-color: #fff;
   --nickname-bg: rgba(255, 255, 255, 0.2);
@@ -488,6 +488,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
