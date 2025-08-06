@@ -258,7 +258,7 @@ html, body {
 }
 
 .remove-btn:hover {
-  background: #cc0000;
+  background: #006633;
 }
 
 #qr-code {
@@ -488,5 +488,6 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
