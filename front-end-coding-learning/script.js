@@ -282,10 +282,14 @@ document.addEventListener("DOMContentLoaded", () => {
   loadQRiousAndInit();
 
   //  Show the popup
+  let popupTimeout;
+  
   function showNewMessagePopup(nick, text) {
     const popup = document.getElementById("new-msg-popup");
     const container = document.querySelector('.screen');
 
+    if (!popup || !container) return;
+    
     // 🔁 Array of local icon paths
     const icons = [
       'icon/heart (1)_0.png',
@@ -314,15 +318,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const maxTop = container.clientHeight - popupHeight;
 
     // Random position inside the video panel
-    const randomLeft = Math.floor(Math.random() * maxLeft);
-    const randomTop = Math.floor(Math.random() * maxTop);
+    const safeLeft = Math.max(0, Math.min(Math.floor(Math.random() * maxLeft), maxLeft));
+    const safeTop = Math.max(0, Math.min(Math.floor(Math.random() * maxTop), maxTop));
 
-    popup.style.left = randomLeft + "px";
-    popup.style.top = randomTop + "px";
+    popup.style.left = `${safeLeft}px`;
+    popup.style.top = `${safeTop}px`;
 
-    // Hide popup after 2.5 seconds
-    setTimeout(() => {
+
+   clearTimeout(popupTimeout); // 🔁 Prevent overlap flickering
+    popupTimeout = setTimeout(() => {
       popup.classList.remove("show");
     }, 3000);
   }
 });
+
