@@ -285,9 +285,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function showNewMessagePopup(nick, text) {
     const popup = document.getElementById("new-msg-popup");
     const container = document.querySelector('.screen');
+
+    // 🔁 Array of local icon paths
+    const icons = [
+      'icon/heart (1)_0.png',
+      'icon/heart_0.png',
+      'icon/kisses_0.png',
+      'icon/panda_0.png'
+    ];
+
+    // 🎲 Pick one at random
+    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+
     
     popup.innerHTML = `
-      <span class="icon"></span>
+      <img class="icon" src="${randomIcon}" alt="icon">
       <div><strong>${escapeHtml(nick)}</strong><br>${escapeHtml(text)}</div>
     `;
     
@@ -311,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hide popup after 2.5 seconds
     setTimeout(() => {
       popup.classList.remove("show");
-    }, 2500);
+    }, 3000);
   }
 });
-
