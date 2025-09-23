@@ -184,18 +184,28 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="delete-btn" aria-label="刪除自己的留言">🗑️</button>
     `;
     // ✅ Only show delete button if nickname matches
-    const currentNick = localStorage.getItem("userNick");
-    if (currentNick && currentNick === msg.nick) {
-      const deleteBtn = li.querySelector(".delete-btn");
+    const deleteBtn = li.querySelector(".delete-btn");
+
+    // ✅ Desktop can delete ANY message
+    if (!isMobileDevice()) {
       deleteBtn.addEventListener("click", () => {
         if (confirm("確定要刪除這則留言嗎？")) {
           deleteMessage(key);
         }
-    });
-  } else {
-    // Hide the delete button for others
-    li.querySelector(".delete-btn").style.display = "none";
-  }
+      });
+    } else {
+      // ✅ Mobile can delete only their own
+      const currentNick = localStorage.getItem("userNick");
+      if (currentNick && currentNick === msg.nick) {
+        deleteBtn.addEventListener("click", () => {
+          if (confirm("確定要刪除這則留言嗎？")) {
+            deleteMessage(key);
+          }
+        });
+      } else {
+        deleteBtn.style.display = "none";
+      }
+    }
     
     list.appendChild(li);
     listWrapper.scrollTop = listWrapper.scrollHeight;
@@ -331,5 +341,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 });
+
 
 
