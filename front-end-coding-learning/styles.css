@@ -54,7 +54,7 @@ html, body {
   width: 360px;
   display: flex;
   flex-direction: column;
-  background-image: url('image/background-christmas-1078138_640.webp'); /* WebP ✅ */
+  background-image: url('image/IMG_8963.jpg'); /* WebP ✅ */
   background-size: cover;
   background-position: center;
   border-radius: 8px;
@@ -488,6 +488,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
