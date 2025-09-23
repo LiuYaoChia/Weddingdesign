@@ -6,7 +6,7 @@
   --msg-highlight: rgba(255, 255, 255, 0.1);
   --text-color: #fff;
   --nickname-bg: rgba(255, 255, 255, 0.2);
-  --form-bg: #f0f0f0; /* light semi-opaque */
+  --form-bg: #D3D3D3; /* light semi-opaque */
   --form-text: #333;
 }
 
@@ -506,6 +506,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
