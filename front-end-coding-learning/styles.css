@@ -6,7 +6,7 @@
   --msg-highlight: rgba(255, 255, 255, 0.1);
   --text-color: #fff;
   --nickname-bg: rgba(255, 255, 255, 0.2);
-  --form-bg: rgba(240,240,240,0.95); /* light semi-opaque */
+  --form-bg: #f0f0f0; /* light semi-opaque */
   --form-text: #333;
 }
 
@@ -149,6 +149,7 @@ html, body {
 
 #msg-form {
   background: var(--form-bg);
+  backdrop-filter: none; /* stop background bleed */
   border-radius: 8px;
   padding: 12px 16px;
   color: var(--form-text);
@@ -386,7 +387,13 @@ html, body {
     background: var(--nickname-bg);
     color: white;
   }
-
+  
+  #nickname,
+  .input-group input[type="text"] {
+    background: rgba(255,255,255,0.9);  /* override the dark nickname-bg */
+    color: #333;
+  }
+  
   .input-group input[type="text"] {
     padding: 12px 36px 12px 12px;
     background: var(--nickname-bg);
@@ -499,6 +506,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
