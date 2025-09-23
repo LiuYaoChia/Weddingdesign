@@ -73,7 +73,6 @@ html, body {
   overflow-y: auto;
   background: var(--chat-bg);
   border-radius: 8px;
-  backdrop-filter: blur(3px);
   margin-bottom: 10px;
   padding-right: 6px;
   position: relative;
@@ -506,6 +505,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
