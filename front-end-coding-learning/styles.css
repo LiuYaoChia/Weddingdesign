@@ -396,8 +396,8 @@ html, body {
   
   .input-group input[type="text"] {
     padding: 12px 36px 12px 12px;
-    background: var(--nickname-bg);
-    color: white;
+    background: rgba(255,255,255,0.9);
+    color: #333;
   }
 
   #emoji-button {
@@ -506,6 +506,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
