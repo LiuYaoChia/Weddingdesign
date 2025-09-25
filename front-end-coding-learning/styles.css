@@ -98,8 +98,10 @@ html, body {
   display: flex;
   align-items: flex-start;
   margin-bottom: 12px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.75); /* brighter, semi-opaque white */
   border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.15);  /* subtle border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* soft shadow for depth */
   padding: 8px;
   animation: slide-up 0.5s forwards;
 }
@@ -132,16 +134,17 @@ html, body {
   flex: 1;
 }
 
-.msg-content .name {
-  font-size: 1.1em;
-  color: #fff;
-  margin-bottom: 4px;
+/* Text colors inside bubble */
+.msg-content .name { 
+  font-size: 1.1em; 
+  color: #333; 
+  margin-bottom: 4px; 
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .msg-content .text {
   font-size: 1.2em;
-  color: var(--text-color);
+  color: #111;
   word-wrap: break-word;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
@@ -149,7 +152,7 @@ html, body {
 /* Make the time text smaller and grey */
 .msg-item .time {
   font-size: 0.75rem;     /* adjust size */
-  color: #999;            /* light grey */
+  color: #555;            /* light grey */
   margin-top: 2px;
   text-align: right;      /* if you want it right aligned */
 }
@@ -513,6 +516,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
