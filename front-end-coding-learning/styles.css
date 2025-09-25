@@ -146,6 +146,14 @@ html, body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
+/* Make the time text smaller and grey */
+.msg-item .time {
+  font-size: 0.75rem;     /* adjust size */
+  color: #999;            /* light grey */
+  margin-top: 2px;
+  text-align: right;      /* if you want it right aligned */
+}
+
 #msg-form {
   background: var(--form-bg);
   backdrop-filter: none; /* stop background bleed */
@@ -505,6 +513,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
