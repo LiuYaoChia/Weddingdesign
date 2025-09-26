@@ -181,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="text">${escapeHtml(msg.text)}</div>
         <div class="time">${msg.time}</div>
       </div>
+      <div class="msg-number">#${count}</div>   <!-- 👈 Add this -->
       <button class="delete-btn" aria-label="刪除自己的留言">🗑️</button>
     `;
     // ✅ Only show delete button if nickname matches
@@ -341,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 });
+
 
 
 
