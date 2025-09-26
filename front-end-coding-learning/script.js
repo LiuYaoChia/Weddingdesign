@@ -118,6 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const index = msgKeyOrder.indexOf(key);
     if (index !== -1) msgKeyOrder.splice(index, 1);
+    
+    // keep numbers correct after deletion
+    updateMessageNumbers();
   });
 
   // ✅ Submit handler
@@ -174,6 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🧱 Render function
   function renderMessage(msg, key) {
     const avatarText = escapeHtml(msg.nick.trim().charAt(0) || "❓"); // fallback avatar
+    
+    // compute the current position (count). msgKeyOrder already has the key pushed before renderMessage() is called.
+    const count = msgKeyOrder.indexOf(key) + 1; // +1 to make it 1-based
 
     const li = document.createElement("li");
     li.className = "msg-item";
@@ -216,8 +222,26 @@ document.addEventListener("DOMContentLoaded", () => {
     
     list.appendChild(li);
     listWrapper.scrollTop = listWrapper.scrollHeight;
+    
+    // Ensure all badges are consistent (useful if messages are removed out-of-order)
+    updateMessageNumbers();
   }
-// ✅ Function to delete message from Firebase
+
+  // Helper: renumber badges (call after removals or inserts)
+  function updateMessageNumbers() {
+    const items = list.querySelectorAll(".msg-item");
+    items.forEach((item, idx) => {
+      let badge = item.querySelector(".msg-number");
+      if (!badge) {
+        badge = document.createElement("div");
+        badge.className = "msg-number";
+        item.appendChild(badge);
+      }
+      badge.textContent = `#${idx + 1}`;
+    });
+  }
+  
+  // ✅ Function to delete message from Firebase
   function deleteMessage(key) {
     const msgRef = ref(db, `messages/${key}`);
     remove(msgRef)
@@ -348,6 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 });
+
 
 
 
