@@ -164,7 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("❌ 清除失敗，請檢查網路或權限設定。");
     }
   });
-
+  
+  // Hide message form if NOT mobile
+  if (!isMobileDevice()) {
+    const msgForm = document.getElementById("msg-form");
+    if (msgForm) msgForm.style.display = "none";
+  }
+  
   // 🧱 Render function
   function renderMessage(msg, key) {
     const avatarText = escapeHtml(msg.nick.trim().charAt(0) || "❓"); // fallback avatar
@@ -342,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 });
+
 
 
 
