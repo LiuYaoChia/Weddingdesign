@@ -98,7 +98,7 @@ html, body {
   display: flex;
   align-items: flex-start;
   margin-bottom: 12px;
-  background: rgba(0, 0, 0, 0.3); /* brighter, semi-opaque white */
+  background: rgba(0, 0, 0, 0.4); /* brighter, semi-opaque white */
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.15);  /* subtle border */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* soft shadow for depth */
@@ -514,6 +514,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
