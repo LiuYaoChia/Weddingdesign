@@ -71,7 +71,7 @@ html, body {
 .msg-list-wrapper {
   flex: 1;
   overflow-y: auto;
-  background: rgba(0, 0, 0, 0.0);
+  background: rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   margin-bottom: 10px;
   padding-right: 6px;
@@ -98,7 +98,7 @@ html, body {
   display: flex;
   align-items: flex-start;
   margin-bottom: 12px;
-  background: rgba(0, 0, 0, 0.4); /* brighter, semi-opaque white */
+  background: rgba(255, 255, 255, 0.75); /* brighter, semi-opaque white */
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.15);  /* subtle border */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* soft shadow for depth */
@@ -137,13 +137,13 @@ html, body {
 /* Text colors inside bubble */
 .msg-content .name { 
   font-size: 1.1em; 
-  color: #fff; 
+  color: #333; 
   margin-bottom: 4px; 
 }
 
 .msg-content .text {
   font-size: 1.2em;
-  color: #fff;
+  color: #111;
   word-wrap: break-word;
 }
 
@@ -514,6 +514,7 @@ html, body {
     padding: 14px;
   }
 }
+
 
 
 
